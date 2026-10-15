@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="12.0"
+      xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.gestionempleados.controller.EmpleadoController"
+      prefWidth="900.0" prefHeight="700.0">
+    <padding>
+        <Insets top="15.0" right="15.0" bottom="15.0" left="15.0"/>
+    </padding>
+
+    <!-- Búsqueda parametrizada: conserva los IDs y el método del controlador -->
+    <TitledPane text="Búsqueda parametrizada" collapsible="false">
+        <VBox spacing="10.0">
+            <HBox spacing="8.0" alignment="CENTER_LEFT">
+                <ComboBox fx:id="cmbFiltro1" promptText="Columna 1" prefWidth="125.0"/>
+                <TextField fx:id="txtFiltro1" promptText="Criterio 1" prefWidth="145.0"/>
+                <ComboBox fx:id="cmbFiltro2" promptText="Columna 2" prefWidth="125.0"/>
+                <TextField fx:id="txtFiltro2" promptText="Criterio 2" prefWidth="145.0"/>
+                <ComboBox fx:id="cmbFiltro3" promptText="Columna 3" prefWidth="125.0"/>
+                <TextField fx:id="txtFiltro3" promptText="Criterio 3" prefWidth="145.0"/>
+            </HBox>
+            <HBox spacing="10.0">
+                <Button fx:id="btnBuscar" text="Buscar" onAction="#handleBuscar" prefWidth="100.0"/>
+                <Button fx:id="btnQuitarFiltros" text="Quitar filtros" onAction="#handleQuitarFiltros" prefWidth="120.0"/>
+            </HBox>
+        </VBox>
+    </TitledPane>
+
+    <!-- Formulario CRUD: conserva los IDs y los métodos originales -->
+    <TitledPane text="Gestión de empleados" collapsible="false">
+        <GridPane hgap="12.0" vgap="10.0">
+            <columnConstraints>
+                <ColumnConstraints minWidth="65.0"/>
+                <ColumnConstraints hgrow="ALWAYS" minWidth="180.0"/>
+                <ColumnConstraints minWidth="65.0"/>
+                <ColumnConstraints hgrow="ALWAYS" minWidth="180.0"/>
+            </columnConstraints>
+
+            <Label text="Código:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+            <TextField fx:id="txtCodigo" promptText="Código del empleado" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+            <Label text="Correo:" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+            <TextField fx:id="txtCorreo" promptText="Correo electrónico" GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+
+            <Label text="Nombre:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+            <TextField fx:id="txtNombre" promptText="Nombre completo" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+            <Label text="Cargo:" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+            <TextField fx:id="txtCargo" promptText="Cargo" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+
+            <Label text="Salario:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+            <TextField fx:id="txtSalario" promptText="Ej. 1250.00" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+            <HBox spacing="10.0" alignment="CENTER" GridPane.columnIndex="0" GridPane.columnSpan="4" GridPane.rowIndex="3">
+                <padding>
+                    <Insets top="8.0"/>
+                </padding>
+                <Button fx:id="btnGuardar" text="Guardar" onAction="#handleGuardar" prefWidth="100.0"/>
+                <Button fx:id="btnActualizar" text="Actualizar" onAction="#handleActualizar" prefWidth="100.0"/>
+                <Button fx:id="btnEliminar" text="Eliminar" onAction="#handleEliminar" prefWidth="100.0"/>
+                <Button fx:id="btnLimpiar" text="Limpiar" onAction="#handleLimpiar" prefWidth="100.0"/>
+            </HBox>
+        </GridPane>
+    </TitledPane>
+
+    <!-- Tabla de empleados -->
+    <VBox spacing="6.0" VBox.vgrow="ALWAYS">
+        <Label text="Empleados activos"/>
+        <TableView fx:id="tablaEmpleados" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="colCodigo" text="Código" prefWidth="110.0"/>
+                <TableColumn fx:id="colNombre" text="Nombre" prefWidth="190.0"/>
+                <TableColumn fx:id="colCorreo" text="Correo" prefWidth="230.0"/>
+                <TableColumn fx:id="colCargo" text="Cargo" prefWidth="160.0"/>
+                <TableColumn fx:id="colSalario" text="Salario" prefWidth="110.0"/>
+            </columns>
+        </TableView>
+    </VBox>
+</VBox>
